@@ -1,0 +1,1 @@
+# gyakorlasvizsgara2
