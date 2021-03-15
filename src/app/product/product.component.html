@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Active</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of productList$ | async">
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.active}}</td>
+      <td><button type="button" class="btn btn-danger">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button></td>
+    </tr>
+    <tr>
+
+
+    </tr>
+  </tbody>
+</table>
