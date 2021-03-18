@@ -4,13 +4,15 @@ import { Product } from '../model/product';
 import { ProductService } from 'src/app/service/product.service';
 
 
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-
+clickMessage='';
+;
 productList$: BehaviorSubject<Product[]>= this.productService.list$;
 
   constructor(
@@ -19,6 +21,9 @@ productList$: BehaviorSubject<Product[]>= this.productService.list$;
 
   ngOnInit(): void {
     this.productService.getAll();
+  }
+  onClickMe() {
+    this.clickMessage="You are a Hero"
   }
 
 }

@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { Product } from 'src/app/model/product';
+import { ProductService } from 'src/app/service/product.service'
+
 
 @Component({
   selector: 'app-product-editor',
@@ -6,10 +12,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-editor.component.scss']
 })
 export class ProductEditorComponent implements OnInit {
-
-  constructor() { }
+product: Product= new Product();
+  constructor(
+    private productService: ProductService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
-  }
+    this.productService.getAll();
+    this.activatedRoute.params.subscribe(
+      params =>
+      this.productService.get(params.idOrName).subscribe(
+        product =>
+         this.product = product || new Product()
 
+      )
+    )
+  }
+onFormSubmit(form: NgForm): void {
+  this.productService.update(this.product);
+  this.router.navigate(['products']);
+}
 }

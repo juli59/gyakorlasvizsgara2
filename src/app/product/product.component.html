@@ -6,6 +6,7 @@
       <th>Price</th>
       <th>Active</th>
       <th></th>
+
     </tr>
   </thead>
   <tbody>
@@ -14,9 +15,19 @@
       <td>{{product.name}}</td>
       <td>{{product.price}}</td>
       <td>{{product.active}}</td>
-      <td><button type="button" class="btn btn-danger">
-        <i class="fa fa-trash" aria-hidden="true"></i>
-      </button></td>
+
+      <td>
+        <div class="btn-group">
+          <button type="button" [routerLink]="[product.id]"  class="btn btn-info">
+          <i class="fa fa-edit"></i>
+        </button>
+          <button type="button" class="btn btn-danger">
+          <i class="fa fa-trash"></i>
+        </button>
+<button (click)="onClickMe()" type="button" class="btn btn-success"><i class="fa fa-success"></i>Click Me!</button>{{clickMessage}}
+
+        </div>
+      </td>
     </tr>
     <tr>
 
